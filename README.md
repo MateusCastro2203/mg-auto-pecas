@@ -32,7 +32,8 @@ Leia na ordem:
 6. [Precificação e taxas do ML](docs/05-precificacao.md)
 7. [Divisão de trabalho entre os sócios](docs/06-divisao-trabalho.md)
 8. [Metas e números — 0 a 10k](docs/07-metas-numeros.md)
-9. [Checklist acionável](docs/checklist.md)
+9. [Fornecedores — top 3 produtos](docs/09-fornecedores.md)
+10. [Checklist acionável](docs/checklist.md)
 
 ## Agente especialista
 
