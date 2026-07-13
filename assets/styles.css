@@ -126,6 +126,13 @@ section{padding:clamp(32px,5vw,54px) 0; border-bottom:1px solid var(--line)}
 .tag{font-size:.7rem; font-weight:700; letter-spacing:.02em; padding:4px 10px; border-radius:999px; background:var(--surface-2); color:var(--muted)}
 .tag.good{color:var(--good); background:color-mix(in srgb,var(--good) 14%, transparent)}
 .tag.tech{color:var(--accent); background:color-mix(in srgb,var(--accent) 12%, transparent)}
+a.tag{text-decoration:none}
+a.tag:hover{color:var(--ink); background:color-mix(in srgb,var(--accent) 14%, transparent)}
+.pcard .go{display:inline-block; margin-top:14px; font-weight:700; font-size:.9rem; text-decoration:none; color:var(--accent)}
+.pcard .go:hover{color:var(--accent-strong)}
+.backlink{display:inline-block; margin-bottom:14px; text-decoration:none; color:var(--muted); font-weight:600; font-size:.9rem}
+.backlink:hover{color:var(--accent)}
+.suptable a{color:var(--accent-strong); font-weight:600}
 
 /* ---- table ---- */
 .tablecard{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); overflow-x:auto}
