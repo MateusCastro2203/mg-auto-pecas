@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+
+# Planilhas/controle local que não vão pro versionamento
+/controle/
+*.local.*
+
+# Segredos e credenciais (NUNCA versionar dados de conta/fiscais)
+.env
+*.secret
+credenciais*
