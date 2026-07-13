@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MG Auto Peças — Plano 0 a 10k</title>
+<style>
+:root{
+  --ground:#F1F4F4; --surface:#FFFFFF; --surface-2:#E9EEEE;
+  --ink:#16242A; --muted:#57686F; --line:#DBE3E3;
+  --accent:#0F6E7C; --accent-strong:#0A505A; --amber:#C77E17; --good:#2E7D5B;
+  --shadow:0 1px 2px rgba(20,40,45,.05), 0 10px 28px rgba(20,40,45,.06);
+  --radius:16px; --maxw:880px;
+  --font-sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --font-mono:ui-monospace,"SF Mono","SFMono-Regular",Menlo,Consolas,monospace;
+  color-scheme:light dark;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --ground:#0E1619; --surface:#152329; --surface-2:#1C2E35;
+    --ink:#E9F1F1; --muted:#93A6AD; --line:#26383F;
+    --accent:#3FB0BF; --accent-strong:#5AC4D2; --amber:#E7A93E; --good:#4FB98A;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 12px 34px rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="light"]{
+  --ground:#F1F4F4; --surface:#FFFFFF; --surface-2:#E9EEEE;
+  --ink:#16242A; --muted:#57686F; --line:#DBE3E3;
+  --accent:#0F6E7C; --accent-strong:#0A505A; --amber:#C77E17; --good:#2E7D5B;
+  --shadow:0 1px 2px rgba(20,40,45,.05), 0 10px 28px rgba(20,40,45,.06);
+}
+:root[data-theme="dark"]{
+  --ground:#0E1619; --surface:#152329; --surface-2:#1C2E35;
+  --ink:#E9F1F1; --muted:#93A6AD; --line:#26383F;
+  --accent:#3FB0BF; --accent-strong:#5AC4D2; --amber:#E7A93E; --good:#4FB98A;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 12px 34px rgba(0,0,0,.4);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:var(--font-sans); line-height:1.65;
+  font-size:clamp(15px,1.4vw,16.5px); letter-spacing:.005em;
+}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 22px}
+.eyebrow{
+  font-size:.72rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--accent);
+}
+h1,h2,h3{text-wrap:balance; line-height:1.12; margin:0}
+a{color:var(--accent-strong)}
+.mono{font-family:var(--font-mono); font-variant-numeric:tabular-nums}
+
+/* ---- hero ---- */
+header.hero{
+  padding:clamp(40px,7vw,76px) 0 clamp(28px,4vw,40px);
+  border-bottom:1px solid var(--line);
+  background:
+    radial-gradient(120% 90% at 88% -10%, color-mix(in srgb,var(--accent) 10%, transparent), transparent 60%),
+    var(--ground);
+}
+.brand{display:flex; align-items:center; gap:14px; margin-bottom:clamp(26px,5vw,44px)}
+.emblem{width:56px; height:56px; flex:0 0 auto}
+.brand .name{font-weight:800; font-size:1.15rem; letter-spacing:-.01em; line-height:1.1}
+.brand .name small{display:block; font-weight:600; font-size:.66rem; letter-spacing:.18em;
+  color:var(--muted); text-transform:uppercase; margin-top:2px}
+h1{font-size:clamp(2.1rem,6.5vw,3.5rem); font-weight:820; letter-spacing:-.02em; margin:.5rem 0 0}
+h1 .hl{color:var(--accent)}
+.lede{color:var(--muted); font-size:clamp(1rem,2.2vw,1.18rem); max-width:60ch; margin:1rem 0 0}
+.founders{display:flex; flex-wrap:wrap; gap:10px; margin-top:26px}
+.chip{
+  display:inline-flex; align-items:center; gap:8px; background:var(--surface);
+  border:1px solid var(--line); border-radius:999px; padding:7px 14px 7px 8px;
+  font-size:.9rem; font-weight:600; box-shadow:var(--shadow)
+}
+.chip .av{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;
+  font-size:.72rem;font-weight:800;color:#fff;background:var(--accent)}
+.chip .av.b{background:var(--amber)}
+
+/* ---- sections ---- */
+section{padding:clamp(34px,5.5vw,58px) 0; border-bottom:1px solid var(--line)}
+.sec-head{margin-bottom:22px}
+.sec-head h2{font-size:clamp(1.35rem,3.4vw,1.9rem); font-weight:800; letter-spacing:-.015em}
+.sec-head p{color:var(--muted); margin:.5rem 0 0; max-width:62ch}
+
+/* ---- snapshot stats ---- */
+.stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(155px,1fr)); gap:14px}
+.stat{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+  padding:18px 18px 16px; box-shadow:var(--shadow)}
+.stat .k{font-size:.7rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--muted)}
+.stat .v{font-family:var(--font-mono); font-size:1.5rem; font-weight:700; margin-top:8px; letter-spacing:-.02em}
+.stat .d{font-size:.85rem; color:var(--muted); margin-top:4px}
+.stat.accent{border-color:color-mix(in srgb,var(--accent) 45%,var(--line))}
+.stat.accent .v{color:var(--accent)}
+
+/* ---- callout ---- */
+.callout{background:var(--surface); border:1px solid var(--line);
+  border-left:4px solid var(--accent); border-radius:14px; padding:22px 24px; box-shadow:var(--shadow)}
+.callout p{margin:0; font-size:1.06rem}
+.callout strong{color:var(--accent-strong)}
+
+/* ---- phases ---- */
+.phases{display:grid; gap:14px}
+.phase{display:grid; grid-template-columns:auto 1fr; gap:18px; align-items:start;
+  background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+  padding:20px 22px; box-shadow:var(--shadow)}
+.phase .num{font-family:var(--font-mono); font-size:1.05rem; font-weight:700; color:#fff;
+  background:var(--accent); width:38px; height:38px; border-radius:11px; display:grid; place-items:center}
+.phase h3{font-size:1.08rem; font-weight:800}
+.phase .when{font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--amber); margin-top:3px}
+.phase ul{margin:.6rem 0 0; padding-left:1.05rem; color:var(--muted)}
+.phase li{margin:.2rem 0}
+.phase li b{color:var(--ink); font-weight:650}
+
+/* ---- roles ---- */
+.roles{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+.role{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+  padding:20px 22px; box-shadow:var(--shadow)}
+.role .top{display:flex; align-items:center; gap:12px; margin-bottom:12px}
+.role .av{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;
+  font-weight:800;color:#fff;background:var(--accent)}
+.role .av.b{background:var(--amber)}
+.role .who{font-weight:800; line-height:1.15}
+.role .who small{display:block;font-weight:600;font-size:.75rem;color:var(--muted)}
+.role ul{margin:0;padding-left:1.05rem;color:var(--muted)}
+.role li{margin:.25rem 0}
+
+/* ---- table ---- */
+.tablecard{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+  box-shadow:var(--shadow); overflow-x:auto}
+table{border-collapse:collapse; width:100%; min-width:520px}
+caption{caption-side:bottom; text-align:left; color:var(--muted); font-size:.82rem; padding:12px 18px}
+th,td{padding:12px 16px; text-align:right; border-bottom:1px solid var(--line); font-variant-numeric:tabular-nums}
+th:first-child,td:first-child{text-align:left}
+thead th{font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); font-weight:700}
+tbody td{font-family:var(--font-mono)}
+tbody tr:last-child td{border-bottom:none; font-weight:700}
+tbody tr:last-child{background:color-mix(in srgb,var(--accent) 9%, transparent)}
+.total{color:var(--good)}
+
+/* ---- steps ---- */
+.steps{display:grid; gap:12px; counter-reset:s}
+.step{counter-increment:s; display:grid; grid-template-columns:auto 1fr; gap:16px; align-items:baseline;
+  background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:16px 20px; box-shadow:var(--shadow)}
+.step::before{content:counter(s); font-family:var(--font-mono); font-weight:700; color:var(--accent);
+  font-size:1.2rem}
+.step b{font-weight:700}
+.step p{margin:.2rem 0 0; color:var(--muted); font-size:.92rem}
+
+.note{font-size:.85rem; color:var(--muted); margin-top:20px; padding:14px 16px;
+  background:var(--surface-2); border-radius:12px}
+
+footer{padding:34px 0 60px; color:var(--muted); font-size:.85rem}
+footer .fr{display:flex; flex-wrap:wrap; gap:6px 16px; align-items:center; justify-content:space-between}
+
+@media (max-width:560px){
+  .roles{grid-template-columns:1fr}
+  .phase{grid-template-columns:1fr}
+  .phase .num{margin-bottom:-6px}
+}
+
+/* motion */
+.emblem .prog{stroke-dasharray:78; stroke-dashoffset:78; animation:draw 1.3s .25s cubic-bezier(.2,.7,.2,1) forwards}
+.reveal{opacity:0; transform:translateY(12px); animation:rise .7s ease forwards}
+.reveal.d1{animation-delay:.05s}.reveal.d2{animation-delay:.12s}.reveal.d3{animation-delay:.19s}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes rise{to{opacity:1; transform:none}}
+@media (prefers-reduced-motion:reduce){
+  .emblem .prog{animation:none; stroke-dashoffset:0}
+  .reveal{animation:none; opacity:1; transform:none}
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div class="brand reveal">
+      <svg class="emblem" viewBox="0 0 100 100" aria-label="Logo MG Auto Peças">
+        <circle cx="50" cy="50" r="46" fill="var(--surface)" stroke="var(--accent)" stroke-width="3"/>
+        <path d="M27.5 55 A26 26 0 1 1 72.5 55" fill="none" stroke="var(--surface-2)" stroke-width="6" stroke-linecap="round"/>
+        <path class="prog" d="M27.5 55 A26 26 0 0 1 69.9 25.3" fill="none" stroke="var(--accent)" stroke-width="6" stroke-linecap="round"/>
+        <line x1="50" y1="42" x2="66.9" y2="27.9" stroke="var(--amber)" stroke-width="3.4" stroke-linecap="round"/>
+        <circle cx="50" cy="42" r="3.6" fill="var(--ink)"/>
+        <text x="50" y="82" text-anchor="middle" font-family="var(--font-sans)" font-size="30" font-weight="800" letter-spacing="-1.5" fill="var(--ink)">MG</text>
+      </svg>
+      <div class="name">MG Auto Peças<small>Peças &amp; Acessórios · Mercado Livre</small></div>
+    </div>
+    <p class="eyebrow reveal d1">Plano de negócio · Sociedade</p>
+    <h1 class="reveal d1">Do zero aos <span class="hl">R$&nbsp;10&nbsp;mil</span> vendendo peças de carro no Mercado Livre</h1>
+    <p class="lede reveal d2">A estratégia completa pra sair do zero, construir reputação e girar R$ 1.000 até virar R$ 10 mil de faturamento — feita pra nós dois tocarmos juntos.</p>
+    <div class="founders reveal d3">
+      <span class="chip"><span class="av">MC</span> Mateus Castro</span>
+      <span class="chip"><span class="av b">GB</span> Guilherme Braz</span>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><h2>O ponto de partida</h2></div>
+    <div class="stats">
+      <div class="stat"><div class="k">Capital inicial</div><div class="v">R$ 1.000</div><div class="d">os dois juntos, girando</div></div>
+      <div class="stat accent"><div class="k">Meta</div><div class="v">R$ 10.000</div><div class="d">faturamento acumulado</div></div>
+      <div class="stat"><div class="k">Prazo realista</div><div class="v">~3-4 meses</div><div class="d">vendendo de forma crescente</div></div>
+      <div class="stat"><div class="k">Nossa vantagem</div><div class="v" style="font-size:1.05rem">Conhecimento<br>de carro</div><div class="d">escolha de produto + atendimento</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>A estratégia</h2>
+      <p>Caminho A — acessórios de giro rápido, leves e baratos, com fornecedor nacional e reinvestindo 100% do lucro.</p>
+    </div>
+    <div class="callout">
+      <p>O nosso maior inimigo não é o dinheiro — é a <strong>falta de reputação no Mercado Livre</strong>. Vendedor novo não aparece nas buscas e ninguém confia. Por isso, nos primeiros meses a prioridade é <strong>construir reputação rápido</strong>: produtos que giram, envio no mesmo dia, atendimento impecável. Reputação é o ativo que depois deixa a gente vender mais caro e escalar.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><h2>As 4 fases</h2></div>
+    <div class="phases">
+      <div class="phase">
+        <div class="num">0</div>
+        <div>
+          <h3>Setup</h3><div class="when">Semana 1</div>
+          <ul>
+            <li><b>Abrir MEI</b> (CNAE 47.63-6-03 · ~R$ 76/mês) e criar a conta de vendedor no ML com o CNPJ</li>
+            <li>Ativar <b>Mercado Envios Flex</b> e conta bancária só do negócio</li>
+            <li>Kit básico: balança, embalagens, celular pra fotos</li>
+            <li><b>Acordo de sociedade por escrito</b> antes de vender</li>
+          </ul>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="num">1</div>
+        <div>
+          <h3>Escolher os produtos</h3><div class="when">Semana 1-2</div>
+          <ul>
+            <li>Começar com <b>3-5 SKUs</b> leves, baratos (R$ 5-40) e de alta procura</li>
+            <li>Validar demanda de graça: "Mais vendidos" do ML, unidades vendidas, perguntas</li>
+            <li>Candidatos: suporte de celular, palhetas, lâmpadas LED, <b>scanner OBD2</b>, câmera de ré</li>
+            <li>Comprar de <b>fornecedor nacional</b> (frete rápido) — nada de dropshipping/AliExpress</li>
+          </ul>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="num">2</div>
+        <div>
+          <h3>Primeiras vendas &amp; reputação</h3><div class="when">Mês 1</div>
+          <ul>
+            <li>Objetivo não é lucro — é <b>termômetro verde</b> e as primeiras 15-30 vendas</li>
+            <li>Fotos próprias boas, título otimizado, ficha técnica 100%, compatibilidade correta</li>
+            <li><b>Responder em minutos, postar no mesmo dia, nunca cancelar</b></li>
+            <li>Preço competitivo de entrada; subir conforme as avaliações chegam</li>
+          </ul>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="num">3</div>
+        <div>
+          <h3>Reinvestir &amp; escalar</h3><div class="when">Mês 2-3+</div>
+          <ul>
+            <li><b>Reinvestir 100% do lucro:</b> dobrar os campeões, cortar o que não gira</li>
+            <li>Migrar campeões pro <b>Full</b> e testar <b>Mercado Ads</b> com orçamento pequeno</li>
+            <li>Começar a virar "a loja" de um <b>nicho/modelo</b> (ex: Gol, Onix, Civic)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>O poder do giro</h2>
+      <p>O truque não é ter muito capital — é girar o mesmo dinheiro várias vezes, reinvestindo o lucro. Ticket médio de R$ 100 e margem líquida de ~25%.</p>
+    </div>
+    <div class="tablecard">
+      <table>
+        <thead>
+          <tr><th>Ciclo (~2-4 sem.)</th><th>Capital no início</th><th>Faturamento no ciclo</th><th>Lucro reinvestido</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>R$ 1.000</td><td>R$ 1.600</td><td>R$ 400</td></tr>
+          <tr><td>2</td><td>R$ 1.400</td><td>R$ 2.300</td><td>R$ 575</td></tr>
+          <tr><td>3</td><td>R$ 1.975</td><td>R$ 3.200</td><td>R$ 800</td></tr>
+          <tr><td>4</td><td>R$ 2.775</td><td>R$ 4.600</td><td>—</td></tr>
+          <tr><td>Acumulado</td><td>—</td><td class="total">≈ R$ 11.700</td><td>meta batida ✓</td></tr>
+        </tbody>
+        <caption>Números ilustrativos (custo médio ~R$ 60/un., reinvestimento total). R$ 10k = ~100 vendas ≈ 1 venda/dia crescendo. Faturamento não é lucro — decisões do dia a dia se tomam pelo lucro líquido.</caption>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Quem faz o quê</h2>
+      <p>Dividir por função evita bola dividida. Sugestão inicial — ajustável entre nós dois.</p>
+    </div>
+    <div class="roles">
+      <div class="role">
+        <div class="top"><span class="av">MC</span><span class="who">Mateus Castro<small>Compras &amp; Finanças</small></span></div>
+        <ul>
+          <li>Pesquisa e validação de produtos</li>
+          <li>Fornecedores e negociação</li>
+          <li>Precificação e margem por SKU</li>
+          <li>Caixa e decisão de reinvestimento</li>
+        </ul>
+      </div>
+      <div class="role">
+        <div class="top"><span class="av b">GB</span><span class="who">Guilherme Braz<small>Anúncios, Atendimento &amp; Logística</small></span></div>
+        <ul>
+          <li>Fotos e criação dos anúncios</li>
+          <li>Atendimento e pós-venda</li>
+          <li>Embalagem e despacho no mesmo dia</li>
+          <li>Gestão de avaliações e reputação</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note">💡 Reputação precisa de <b>um dono claro</b> (atendimento + despacho). Se os dois acharem que "o outro ia responder", vem a nota vermelha.</div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Precificação — a pegadinha</h2>
+      <p>O preço tem que cobrir tudo: custo + comissão do ML (~12-19%) + tarifa fixa + frete + embalagem + margem.</p>
+    </div>
+    <div class="callout" style="border-left-color:var(--amber)">
+      <p>Itens abaixo de <strong>~R$ 79</strong> pagam uma <strong>tarifa fixa por unidade</strong> que destrói a margem. Solução: <strong>montar kits</strong> pra passar desse valor — dilui a taxa, libera frete grátis subsidiado e melhora a posição na busca. Muitos vendedores miram ticket de R$ 80-150. <em>As taxas do ML mudam — sempre confirmar no simulador antes de fechar preço.</em></p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><h2>Nossos primeiros passos</h2></div>
+    <div class="steps">
+      <div class="step"><div><b>Fechar o acordo de sociedade</b><p>Capital de cada um, divisão de lucro, papéis e regra de saída — por escrito, antes de qualquer venda.</p></div></div>
+      <div class="step"><div><b>Abrir o MEI e a conta de vendedor</b><p>CNAE 47.63-6-03, conta no ML com o CNPJ, Mercado Pago e Mercado Envios Flex.</p></div></div>
+      <div class="step"><div><b>Escolher os 3-5 primeiros produtos</b><p>Pesquisar demanda no ML, achar fornecedor nacional e comprar o primeiro lote pequeno pra testar.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap fr">
+    <span><strong>MG Auto Peças</strong> — Mateus Castro &amp; Guilherme Braz</span>
+    <span>Meta: R$ 10.000 acumulados 🎯</span>
+  </div>
+</footer>
+</body>
+</html>
